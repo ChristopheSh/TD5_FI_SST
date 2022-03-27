@@ -1,7 +1,6 @@
-#test
 #!/usr/bin/env python3
 
-
+# TD 5 - SHI- STEINLE - TOURTOULOU
 
 class Book :
     bookName=""
@@ -17,7 +16,7 @@ class Book :
         typeAction="BUY"
         
         ordername=Order(typeAction,quantity,price,id)
-        print(f"--- Insert {ordername} on {self.bookName}")
+        print(f"---> Insert {ordername} on {self.bookName}")
         
         Book.listBook.append(ordername)
         
@@ -31,7 +30,7 @@ class Book :
         typeAction="SELL"
         
         ordername=Order(typeAction,quantity,price,id)
-        print(f"--- Insert {ordername} on {self.bookName}")
+        print(f"---> Insert {ordername} on {self.bookName}")
         
         quantity=Book.ComparareExActions(self,quantity,price)
         
@@ -52,7 +51,7 @@ class Book :
             if (Book.listBook[i].quantity!=0):
                 print(f"     {str(Book.listBook[i])}")
                 
-        print("-------------------------------")
+        print("--------------------------------------------\n")
         
     
     
@@ -88,19 +87,24 @@ class Book :
     
     
     def ComparareExActions(self,nb,prix):
+        
         for i in range(len(self.listBook)):
             compteurIntern = 0
             if (nb > 0):
+                
                 if (self.listBook[i].price >= prix and self.listBook[i].typeAction == "BUY"):
                     while (nb > 0 and self.listBook[i].quantity >0):
                         self.listBook[i].quantity = self.listBook[i].quantity - 1
                         compteurIntern = compteurIntern +1
                         nb = nb - 1
-        
+                        
+                        
+                if (compteurIntern >= 1):
+                    print(f"Execute {compteurIntern} at {self.listBook[i].price} on {self.bookName}")
+                
         return nb
     
     
-
     
     
     
