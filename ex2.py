@@ -12,9 +12,11 @@ def main():
     book.insert_buy(2,11.0)
     book.insert_sell(1,10.0)
     book.insert_sell(10,10.0)
+    print(book)
 
 
 if __name__ == "__main__":
     print("\n")
     main()
+    print("hello world")
 

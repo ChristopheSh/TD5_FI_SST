@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # TD 5 - SHI- STEINLE - TOURTOULOU
+import pandas
 
 class Book :
     bookName=""
@@ -105,7 +106,18 @@ class Book :
         return nb
     
     
-    
+    def __str__(self):
+        dico_buy = {}
+        dico_sell = {}
+        for order in self.listBook :
+            if (order.typeAction == "SELL"):
+                dico_sell[str(order.id)] = [order.typeAction,str(order.quantity),str(order.price)]
+            else:
+                dico_buy[str(order.id)] = [order.typeAction,str(order.quantity),str(order.price)]
+        buy = pandas.DataFrame(dico_buy,index = ['Opertation', 'Qty', '$'])
+        sell = pandas.DataFrame(dico_sell,index = ['Opertation', 'Qty', '$'])
+        with pandas.option_context('display.max_rows', None,'display.max_columns', None,'display.precision', 3,):
+            return("___________Book_BUY____________\n"+buy.to_string() + "\n___________Book_SELL____________\n" + sell.to_string())
     
     
     
